@@ -20,7 +20,7 @@ count = 0;                                                          %iterator to
 
 %target directory to create sample roi to reuse
 imagedir = fullfile(parentdir, acqfolders(2).name);
-acq2_folder = dir(fullfile(imagedir, "*AF700*"));
+acq2_folder = dir(fullfile(imagedir, "*AF700*"));                   %AF700 - subject to change depending on the target dye 
 createSample_profileIM = fullfile(imagedir, acq2_folder(1).name);
 fprintf("Used file: %s for sample ROI\n", createSample_profileIM)   %printing the acqusition file used
 
