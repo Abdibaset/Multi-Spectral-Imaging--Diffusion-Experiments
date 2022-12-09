@@ -1,5 +1,5 @@
 close all; clear; clc;
-diary name_of_your_choice; diary on;           %saving the command window output to file
+diary name_of_your_choice; diary on;                               %saving the command window output to file
 
 %providing the path
 parentdir = fullfile("..", "MaestroData_fall22", folder_name);     %'folder_name' -> folder name can change to one required
@@ -28,7 +28,7 @@ fprintf("Used file: %s for sample ROI\n", createSample_profileIM)   %printing th
 for i = 1: numel(acqfolders)
     %open folder
     imdirectory = fullfile(parentdir, acqfolders(i).name);
-    im_toRead_dir = dir(fullfile(imdirectory, "*AF700*"));
+    im_toRead_dir = dir(fullfile(imdirectory, "*AF700*"));          %AF700 - subject to change depending on the target dye
     im_toRead = imread(fullfile(imdirectory, im_toRead_dir(1).name));
     
     %creating and saving rios
@@ -39,7 +39,7 @@ for i = 1: numel(acqfolders)
         if ~exist(ROIs, 'file')
             f1 = figure;
             imshow(createSample_profileIM); clim([0 50]); axis image; axis off;
-            [cx1, cy1, p1, ix1, iy1] = improfile;
+            [cx1, cy1, p1, ix1, iy1] = improfile;                   %prompting user to draw the profile on image displayed at this stage
             save(ROIs, 'cx1', 'cy1', 'p1', 'ix1', 'iy1');
             close(f1);
         else
@@ -60,11 +60,11 @@ for i = 1: numel(acqfolders)
     midp_index = round(length(cx2)/2);
     midX = cx2(midp_index); midY = cy2(midp_index);
 
-    %calculating distance using Euclidean equation
+    %calculating distance using Euclidean formula
     for n = 1: numel(cx2)
-        distance = ((cx2(n) - midX)^2 + (cy2(n) - midY)^2)^0.5;     %distance between two points
+        distance = ((cx2(n) - midX)^2 + (cy2(n) - midY)^2)^0.5;     %distance between two points -> current point in loop from midpoint of array cx2
         if n < midp_index
-            distance = -distance;
+            distance = -distance;                                   %two sides of the midpoint - one positive, other negative to avoid getting same val twice
         end
         distance_vect(n) = distance/142.03;                         %converting from pixel to cm - 1cm -> 142.003
     end 
@@ -273,6 +273,6 @@ saveas(gcf, fullfile(imdirectory, sprintf('radii_time.fig')), 'fig');
 close(figure(6));
 
 diff_cofficient = coefficients(1)*(1/60) * 0.25;                    %Einstein's equation
-fprintf('Diffusion co-efficient for AF700 from run 1: %d (cm^2 per second)\n', diff_cofficient)
+fprintf('Diffusion co-efficient for AF700 from run 1: %d (cm^2 per second)\n', diff_cofficient) %statement subject to change for a given dye
  
 diary off   
