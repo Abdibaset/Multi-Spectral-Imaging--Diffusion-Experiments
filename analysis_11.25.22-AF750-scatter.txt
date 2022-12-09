@@ -1,0 +1,246 @@
+17
+if system_dependent('IsDebugMode')==1, dbquit; end
+profileAnalysis
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+profileAnalysis
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+profileAnalysis
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+profileAnalysis
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbcont; end
+Used file: ../MaestroData_fall22/11.25.22-AF750/ACQ2/eef2_2022-Nov-25__16_11_33_subt_AF750_Data_x10.tif for sample ROI
+
+The diameter from different cross-sections run: 1
+Center: 5.904532e-01
+Left diagonal: 6.034944e-01
+Vertical: 6.465041e-01
+Right diagonal: 6.411455e-01
+Average of the four: 6.203993e-01
+
+The diameter from different cross-sections run: 2
+Center: 6.607453e-01
+Left diagonal: 6.684861e-01
+Vertical: 6.816402e-01
+Right diagonal: 6.876054e-01
+Average of the four: 6.746192e-01
+
+The diameter from different cross-sections run: 3
+Center: 6.958913e-01
+Left diagonal: 7.334778e-01
+Vertical: 7.448852e-01
+Right diagonal: 7.154813e-01
+Average of the four: 7.224339e-01
+
+The diameter from different cross-sections run: 4
+Center: 6.818329e-01
+Left diagonal: 7.427623e-01
+Vertical: 7.729940e-01
+Right diagonal: 7.340652e-01
+Average of the four: 7.329136e-01
+
+The diameter from different cross-sections run: 5
+Center: 7.591541e-01
+Left diagonal: 7.520469e-01
+Vertical: 7.659668e-01
+Right diagonal: 7.247732e-01
+Average of the four: 7.504853e-01
+
+The diameter from different cross-sections run: 6
+Center: 7.591541e-01
+Left diagonal: 7.520469e-01
+Vertical: 7.800213e-01
+Right diagonal: 7.805250e-01
+Average of the four: 7.679368e-01
+
+The diameter from different cross-sections run: 7
+Center: 7.872709e-01
+Left diagonal: 7.706159e-01
+Vertical: 8.151573e-01
+Right diagonal: 7.712330e-01
+Average of the four: 7.860693e-01
+
+The diameter from different cross-sections run: 8
+Center: 7.802417e-01
+Left diagonal: 7.613314e-01
+Vertical: 8.151573e-01
+Right diagonal: 7.898170e-01
+Average of the four: 7.866369e-01
+
+The diameter from different cross-sections run: 9
+Center: 8.435046e-01
+Left diagonal: 7.799005e-01
+Vertical: 8.362390e-01
+Right diagonal: 8.734447e-01
+Average of the four: 8.332722e-01
+
+The diameter from different cross-sections run: 10
+Center: 8.224170e-01
+Left diagonal: 6.777706e-01
+Vertical: 8.221846e-01
+Right diagonal: 7.991089e-01
+Average of the four: 7.803703e-01
+
+The diameter from different cross-sections run: 11
+Center: 9.208258e-01
+Left diagonal: 8.634612e-01
+Vertical: 9.557017e-01
+Right diagonal: 8.920286e-01
+Average of the four: 9.080043e-01
+
+The diameter from different cross-sections run: 12
+Center: 7.450957e-01
+Left diagonal: 7.520469e-01
+Vertical: 8.362390e-01
+Right diagonal: 7.247732e-01
+Average of the four: 7.645387e-01
+
+The diameter from different cross-sections run: 13
+Center: 1.005176e+00
+Left diagonal: 8.170386e-01
+Vertical: 8.994840e-01
+Right diagonal: 8.548607e-01
+Average of the four: 8.941399e-01
+
+The diameter from different cross-sections run: 14
+Center: 8.645922e-01
+Left diagonal: 8.077541e-01
+Vertical: 9.557017e-01
+Right diagonal: 8.362768e-01
+Average of the four: 8.660812e-01
+
+The diameter from different cross-sections run: 15
+Center: 8.856798e-01
+Left diagonal: 7.799005e-01
+Vertical: 9.205656e-01
+Right diagonal: 8.084009e-01
+Average of the four: 8.486367e-01
+
+The diameter from different cross-sections run: 16
+Center: 8.435046e-01
+Left diagonal: 9.470220e-01
+Vertical: 9.486745e-01
+Right diagonal: 8.455688e-01
+Average of the four: 8.961925e-01
+Diffusion co-efficient for IR680 from run 1: 1.918513e-06 (cm^2 per second)
+profileAnalysis
+if system_dependent('IsDebugMode')==1, dbcont; end
+if system_dependent('IsDebugMode')==1, dbquit; end
+profileAnalysis
+Used file: ../MaestroData_fall22/11.25.22-AF750/ACQ2/eef2_2022-Nov-25__16_11_33_subt_AF750_Data_x10.tif for sample ROI
+
+The diameter from different cross-sections run: 1
+Center: 5.904532e-01
+Left diagonal: 6.034944e-01
+Vertical: 6.465041e-01
+Right diagonal: 6.411455e-01
+Average of the four: 6.203993e-01
+
+The diameter from different cross-sections run: 2
+Center: 6.607453e-01
+Left diagonal: 6.684861e-01
+Vertical: 6.816402e-01
+Right diagonal: 6.876054e-01
+Average of the four: 6.746192e-01
+
+The diameter from different cross-sections run: 3
+Center: 6.958913e-01
+Left diagonal: 7.334778e-01
+Vertical: 7.448852e-01
+Right diagonal: 7.154813e-01
+Average of the four: 7.224339e-01
+
+The diameter from different cross-sections run: 4
+Center: 6.818329e-01
+Left diagonal: 7.427623e-01
+Vertical: 7.729940e-01
+Right diagonal: 7.340652e-01
+Average of the four: 7.329136e-01
+
+The diameter from different cross-sections run: 5
+Center: 7.591541e-01
+Left diagonal: 7.520469e-01
+Vertical: 7.659668e-01
+Right diagonal: 7.247732e-01
+Average of the four: 7.504853e-01
+
+The diameter from different cross-sections run: 6
+Center: 7.591541e-01
+Left diagonal: 7.520469e-01
+Vertical: 7.800213e-01
+Right diagonal: 7.805250e-01
+Average of the four: 7.679368e-01
+
+The diameter from different cross-sections run: 7
+Center: 7.872709e-01
+Left diagonal: 7.706159e-01
+Vertical: 8.151573e-01
+Right diagonal: 7.712330e-01
+Average of the four: 7.860693e-01
+
+The diameter from different cross-sections run: 8
+Center: 7.802417e-01
+Left diagonal: 7.613314e-01
+Vertical: 8.151573e-01
+Right diagonal: 7.898170e-01
+Average of the four: 7.866369e-01
+
+The diameter from different cross-sections run: 9
+Center: 8.435046e-01
+Left diagonal: 7.799005e-01
+Vertical: 8.362390e-01
+Right diagonal: 8.734447e-01
+Average of the four: 8.332722e-01
+
+The diameter from different cross-sections run: 10
+Center: 8.224170e-01
+Left diagonal: 6.777706e-01
+Vertical: 8.221846e-01
+Right diagonal: 7.991089e-01
+Average of the four: 7.803703e-01
+
+The diameter from different cross-sections run: 11
+Center: 9.208258e-01
+Left diagonal: 8.634612e-01
+Vertical: 9.557017e-01
+Right diagonal: 8.920286e-01
+Average of the four: 9.080043e-01
+
+The diameter from different cross-sections run: 12
+Center: 7.450957e-01
+Left diagonal: 7.520469e-01
+Vertical: 8.362390e-01
+Right diagonal: 7.247732e-01
+Average of the four: 7.645387e-01
+
+The diameter from different cross-sections run: 13
+Center: 1.005176e+00
+Left diagonal: 8.170386e-01
+Vertical: 8.994840e-01
+Right diagonal: 8.548607e-01
+Average of the four: 8.941399e-01
+
+The diameter from different cross-sections run: 14
+Center: 8.645922e-01
+Left diagonal: 8.077541e-01
+Vertical: 9.557017e-01
+Right diagonal: 8.362768e-01
+Average of the four: 8.660812e-01
+
+The diameter from different cross-sections run: 15
+Center: 8.856798e-01
+Left diagonal: 7.799005e-01
+Vertical: 9.205656e-01
+Right diagonal: 8.084009e-01
+Average of the four: 8.486367e-01
+
+The diameter from different cross-sections run: 16
+Center: 8.435046e-01
+Left diagonal: 9.470220e-01
+Vertical: 9.486745e-01
+Right diagonal: 8.455688e-01
+Average of the four: 8.961925e-01
+Diffusion co-efficient for AF750 from run 2: 1.918513e-06 (cm^2 per second)

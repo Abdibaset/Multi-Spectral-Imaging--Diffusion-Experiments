@@ -1,0 +1,121 @@
+Used file: ../MaestroData_fall22/12.7.22-AF700/ACQ2/EFF3_2022-Dec-07__15_56_50_subt_AF700_Data_x10.tif for sample ROI
+
+The diameter from different cross-sections run: 1
+Center: 6.055271e-01
+Left diagonal: 5.905184e-01
+Vertical: 5.550244e-01
+Right diagonal: 6.603514e-01
+Average of the four: 6.028553e-01
+
+The diameter from different cross-sections run: 2
+Center: 7.111423e-01
+Left diagonal: 6.889382e-01
+Vertical: 6.674344e-01
+Right diagonal: 7.503993e-01
+Average of the four: 7.044785e-01
+
+The diameter from different cross-sections run: 3
+Center: 7.956344e-01
+Left diagonal: 7.570749e-01
+Vertical: 7.166138e-01
+Right diagonal: 7.879193e-01
+Average of the four: 7.643106e-01
+
+The diameter from different cross-sections run: 4
+Center: 8.449215e-01
+Left diagonal: 7.949287e-01
+Vertical: 8.009213e-01
+Right diagonal: 8.329432e-01
+Average of the four: 8.184287e-01
+
+The diameter from different cross-sections run: 5
+Center: 9.364547e-01
+Left diagonal: 9.236314e-01
+Vertical: 8.711775e-01
+Right diagonal: 9.530071e-01
+Average of the four: 9.210677e-01
+
+The diameter from different cross-sections run: 6
+Center: 9.646187e-01
+Left diagonal: 9.312022e-01
+Vertical: 9.273825e-01
+Right diagonal: 9.605111e-01
+Average of the four: 9.459286e-01
+
+The diameter from different cross-sections run: 7
+Center: 9.787007e-01
+Left diagonal: 9.312022e-01
+Vertical: 9.414338e-01
+Right diagonal: 9.755191e-01
+Average of the four: 9.567139e-01
+
+The diameter from different cross-sections run: 8
+Center: 9.998238e-01
+Left diagonal: 9.614852e-01
+Vertical: 9.835875e-01
+Right diagonal: 9.980311e-01
+Average of the four: 9.857319e-01
+
+The diameter from different cross-sections run: 9
+Center: 1.027988e+00
+Left diagonal: 9.917682e-01
+Vertical: 9.835875e-01
+Right diagonal: 1.020543e+00
+Average of the four: 1.005972e+00
+
+The diameter from different cross-sections run: 10
+Center: 1.091357e+00
+Left diagonal: 1.120471e+00
+Vertical: 1.095998e+00
+Right diagonal: 1.133103e+00
+Average of the four: 1.110232e+00
+
+The diameter from different cross-sections run: 11
+Center: 1.077275e+00
+Left diagonal: 1.128042e+00
+Vertical: 1.046818e+00
+Right diagonal: 1.148111e+00
+Average of the four: 1.100061e+00
+
+The diameter from different cross-sections run: 12
+Center: 1.133603e+00
+Left diagonal: 1.120471e+00
+Vertical: 1.039793e+00
+Right diagonal: 1.118095e+00
+Average of the four: 1.102990e+00
+
+The diameter from different cross-sections run: 13
+Center: 1.006865e+00
+Left diagonal: 1.044763e+00
+Vertical: 9.554850e-01
+Right diagonal: 1.043055e+00
+Average of the four: 1.012542e+00
+
+The diameter from different cross-sections run: 14
+Center: 1.084316e+00
+Left diagonal: 1.052334e+00
+Vertical: 1.081946e+00
+Right diagonal: 9.905271e-01
+Average of the four: 1.052281e+00
+
+The diameter from different cross-sections run: 15
+Center: 1.063193e+00
+Left diagonal: 1.082617e+00
+Vertical: 1.095998e+00
+Right diagonal: 9.980311e-01
+Average of the four: 1.059960e+00
+
+The diameter from different cross-sections run: 16
+Center: 1.147685e+00
+Left diagonal: 1.059905e+00
+Vertical: 1.103023e+00
+Right diagonal: 1.095583e+00
+Average of the four: 1.101549e+00
+
+The diameter from different cross-sections run: 17
+Center: 1.211054e+00
+Left diagonal: 1.302169e+00
+Vertical: 1.285689e+00
+Right diagonal: 1.283183e+00
+Average of the four: 1.270524e+00
+Diffusion co-efficient for IR680 from run 1: 5.081562e-06 (cm^2 per second)
