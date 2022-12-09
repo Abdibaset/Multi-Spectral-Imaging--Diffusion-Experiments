@@ -118,4 +118,4 @@ Left diagonal: 1.302169e+00
 Vertical: 1.285689e+00
 Right diagonal: 1.283183e+00
 Average of the four: 1.270524e+00
-Diffusion co-efficient for IR680 from run 1: 5.081562e-06 (cm^2 per second)
+Diffusion co-efficient for IR680 from run 3: 5.081562e-06 (cm^2 per second)

@@ -119,4 +119,3 @@ Vertical: 1.108037e+00
 Right diagonal: 1.234028e+00
 Average of the four: 1.198032e+00
 Diffusion co-efficient for AF700 from run 1: 4.710468e-06 (cm^2 per second)
-profileAnalysis
