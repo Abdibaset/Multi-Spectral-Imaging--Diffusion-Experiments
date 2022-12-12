@@ -1,5 +1,7 @@
 close all; clear; clc;
-diary analysis_11.26.22-AF700_2ND-scatter.txt; diary on;           %saving the command window output to file
+diary name_of_choice; diary on;                                    %saving the command window output to file
+
+%providing the path
 parentdir = fullfile("..", "MaestroData_fall22", folder_name);     %'folder_name' -> folder name can change to one required
 acqfolders = dir(fullfile(parentdir, "acq*"));
 
@@ -12,22 +14,87 @@ end
 [~,ind] = sort(fnum);
 acqfolders = acqfolders(ind);
 
-%array for radius from all cross-sections -> 17*4
-radii_vect = zeros(1, (length(acqfolders)-1)*4);
-count = 0;                                                          %iterator to keep track of current column in radii_vect
+c = input('Select duration to analyze for:\n(1)for 60mins\n(2)for 3hrs\n');
+t1 = 4;
+% len = length(time_vect);
+if c == 1
+    %array for radius from all cross-sections -> 17*4
+    radii_vect = zeros(1, (length(acqfolders)-5)*4);
+    count = 0;                                                          %iterator to keep track of current column in radii_vec
+    numfolders = numel(acqfolders)-4;
+    increment_time = 0;                                                 %keeps track of time
+    time_vect = zeros(1, (length(acqfolders)-5)*4);                     %4 slots for each time point
+    
+    %populating the vector with time
+    while 1 
+        increment_time = increment_time + 5;                           %increment current time by 5 for first 13 acquistio
+        for t2 = 1:4
+            time_vect(t1+t2) = increment_time;
+        end 
+        t1 = t1 + 4;
+        if t1 >= (length(time_vect))
+            break
+        end 
+    end
+elseif c == 2
+    numfolders = numel(acqfolders);
+    %creating time vector 
+    radii_vect = zeros(1, (length(acqfolders)-1)*4);
+    count = 0;                                                          %iterator to keep track of current column in radii_ve
+    increment_time = 0;                                                 %keeps track of time
+    time_vect = zeros(1, (length(acqfolders)-1)*4);                     %4 slots for each time point
+    
+    %populating the vector with time
+    while 1 
+     if  t1 > (12*4)
+           increment_time = increment_time + 30;                     %increment current time by 30mins
+      else
+         increment_time = increment_time + 5;                           %increment current time by 5 for first 13 acquistions
+      end
+    
+        for t2 = 1:4
+            time_vect(t1+t2) = increment_time;
+        end 
+        t1 = t1 + 4;
+        if t1 == (length(time_vect))
+            break
+        end 
+    end
+end
 
+
+%median arrays 
+median_radii = zeros(1, (length(radii_vect)/4));
+median_time = zeros(1, length(median_radii));
+count_median = 0;
+time_passed = 0;
+t = 1;
+while 1
+    if t > 12
+        time_passed = time_passed + 30;
+    else 
+        time_passed = time_passed + 5;
+    end 
+    t = t + 1;
+    median_time(t) = time_passed;
+    if t >= (length(median_time))
+        break
+    end
+
+end
 %target directory to create sample roi to reuse
 imagedir = fullfile(parentdir, acqfolders(2).name);
-acq2_folder = dir(fullfile(imagedir, "*AF700*"));
-createSample_profileIM = fullfile(imagedir, acq2_folder(1).name);
-fprintf("Used file: %s for sample ROI\n", createSample_profileIM)   %printing the acqusition file used
+acq_folder = dir(fullfile(imagedir, dye_name));
+createSample_profileIM = fullfile(imagedir, acq_folder(1).name);
+fprintf("Used file: %s for sample ROI\n", createSample_profileIM)       %printing the acqusition file used
 
 %loop over all folders
-for i = 1: numel(acqfolders)
+for i = 1: numfolders
     %open folder
     imdirectory = fullfile(parentdir, acqfolders(i).name);
-    im_toRead_dir = dir(fullfile(imdirectory, "*AF700*"));
-    im_toRead = imread(fullfile(imdirectory, im_toRead_dir(1).name));
+    im_toRead_dir = dir(fullfile(imdirectory, dye_name));
+    im_toRead = fullfile(imdirectory, im_toRead_dir(1).name);
+ 
     
     %creating and saving rios
     for j = 1: 4
@@ -41,13 +108,13 @@ for i = 1: numel(acqfolders)
             save(ROIs, 'cx1', 'cy1', 'p1', 'ix1', 'iy1');
             close(f1);
         else
-            load(ROIs, 'cx1', 'cy1', 'p1', 'ix1', 'iy1');          %load if sample roi exist 
+            load(ROIs, 'cx1', 'cy1', 'p1', 'ix1', 'iy1');               %load if sample roi exist 
         end
     
         %using the sample ROI to create a profile on other acquistions
         ROI_saved = fullfile(imdirectory, sprintf("roi_saved_%d.mat", j));
         if ~exist(ROI_saved, 'file')
-            [cx2, cy2, p2, ix2, iy2] = improfile(im_toRead, ix1, iy1);
+            [cx2, cy2, p2, ix2, iy2] = improfile(imread(im_toRead), ix1, iy1);
             save(ROI_saved, 'cx2', 'cy2', 'p2', 'ix2', 'iy2');
         else 
             load(ROI_saved);
@@ -60,11 +127,11 @@ for i = 1: numel(acqfolders)
 
     %calculating distance using Euclidean equation
     for n = 1: numel(cx2)
-        distance = ((cx2(n) - midX)^2 + (cy2(n) - midY)^2)^0.5;     %distance between two points
+        distance = ((cx2(n) - midX)^2 + (cy2(n) - midY)^2)^0.5;         %distance between two points
         if n < midp_index
             distance = -distance;
         end
-        distance_vect(n) = distance/142.03;                         %converting from pixel to cm - 1cm -> 142.003
+        distance_vect(n) = distance/142.03;                             %converting from pixel to cm - 1cm -> 142.003
     end 
       
     %autofluorescence data
@@ -72,8 +139,8 @@ for i = 1: numel(acqfolders)
         %profile through the horizontal center
         if j == 1
             center_autoData = zeros(length(cx2), 2);
-            center_autoData(:, 1) = distance_vect;                  %column 1 - distance (cm)
-            center_autoData(:, 2) = p2;                             %column 2 - pixels 
+            center_autoData(:, 1) = distance_vect;                      %column 1 - distance (cm)
+            center_autoData(:, 2) = p2;                                 %column 2 - pixels 
             center_autoData = smoothdata(center_autoData);
         %profile through the left diagonal
         elseif j == 2
@@ -128,15 +195,15 @@ for i = 1: numel(acqfolders)
     end
 
      %plotting the profiles created to visualize 
-     f3 = figure;      
-     imshow(im_toRead); clim([0 50]); axis image; axis off;
-     hold on
-     plot( cx2, cy2, 'y--', 'LineWidth', 2.5);
-     hold off
-     profile = fullfile(imdirectory, sprintf("profile_%d.png", j));
-     if ~exist(profile, 'file')
+      f3 = figure;      
+      imshow(im_toRead); clim([0 50]); axis image; axis off;
+      hold on
+      plot( cx2, cy2, 'y--', 'LineWidth', 2.5);
+      hold off
+      profile = fullfile(imdirectory, sprintf("profile_%d.png", j));
+      if ~exist(profile, 'file')
         saveas(gcf, fullfile(imdirectory, sprintf("profile_%d.png", j)), 'png');
-     end 
+      end 
     end
    close(f3);
     
@@ -161,14 +228,19 @@ for i = 1: numel(acqfolders)
        plot(vertical_floData(:, 1), vertical_floData(:, 2), 'LineWidth', 2);
        plot(rightDiagonal_floData(:, 1), rightDiagonal_floData(:, 2), 'LineWidth', 2);
        hold off
-       xlim([-2 2]); ylim([0 1500]);                            %y-lim can changed depending on the strength of signal of dye
+       if contains(im_toRead, 'IR800') || contains(im_toRead, 'AF750')
+            ylim([0 350]);                            %y-lim can changed depending on the strength of signal of dye
+       else
+           xlim([0 2500]);
+       end
+       xlim([-2 2]); 
        legend({'c', 'ld', 'v', 'rd'});
        xlabel('distance(cm)'); ylabel('GrayScale/Pixel');
        title('Graph of Fluorescence');
     end
 
     %saving the plots as a graph
-    if i > 1
+    if i > 2
         graph = fullfile(imdirectory, sprintf('fluoresence_%d.fig', i));
         if ~exist(graph, 'file')
             saveas (gcf, fullfile(imdirectory, sprintf('fluoresence_%d.fig', i)), 'fig');
@@ -183,7 +255,7 @@ for i = 1: numel(acqfolders)
 
     %calculating the distance peaks - x-intercepts on either sides of the
     %peak
-    if i > 1  
+    if i > 1
         %per cross-section
 
         %arrays with derivates greater than zero for each array with
@@ -195,7 +267,7 @@ for i = 1: numel(acqfolders)
         
         cl_intercept = center_floData(c_ind(1), 1);
         cr_intercept = center_floData(c_ind(length(c_ind))+1, 1);   
-        dist_center = cr_intercept -cl_intercept;               
+        dist_center = cr_intercept -cl_intercept;                   %diameter        
         center_radiusSquared = (dist_center/2)^2;
 
         ldl_intercept = leftDiagonal_floData(ld_ind(1), 1);
@@ -213,40 +285,29 @@ for i = 1: numel(acqfolders)
         dist_v = vr_intercept - vl_intercept;
         v_radiusSquared = (dist_v/2)^2;
         ave_dist = (dist_v + dist_rd + dist_ld + dist_center)/4;
-        fprintf("\nThe diameter from different cross-sections run: %d\n", i-1);
-        fprintf("Center: %d\nLeft diagonal: %d\nVertical: %d\nRight diagonal: %d\nAverage of the four: %d\n", dist_center,dist_ld, dist_v, dist_rd, ave_dist);
         
+        %printing the diameter for storing the output 
+        fprintf("\nThe diameter, radius squared from different cross-sections run: %d\n", i-1);
+        fprintf("Center: %d(cm)\t\t\tC_r^2: %d(cm^2)\nLeft diagonal: %d(cm)\t\t\tld_r^2: %d(cm^2)\nVertical: %d(cm)\t\t\tv_r^2: %d(cm^2)\n" + ...
+            "Right diagonal: %d(cm)\t\trd_r^2: %d(cm^2)\nAverage of the four: %d(cm)\n", ...
+            dist_center,center_radiusSquared,dist_ld,ld_radiusSquared, dist_v, v_radiusSquared, dist_rd, rd_radiusSquared, ave_dist);
         
+        %populating the radii_vect with radius squared from each
+        %cross-section
         radii_vect(1, count+1) = center_radiusSquared;
         radii_vect(1, count+2) = ld_radiusSquared;
         radii_vect(1, count+3) = v_radiusSquared;
         radii_vect(1, count+4) = rd_radiusSquared;
-        count = count + 4;
+
+        all_radii = zeros(1, 4);
+        all_radii(1,1) = center_radiusSquared; all_radii(1, 2) = ld_radiusSquared;
+        all_radii(1, 3) = v_radiusSquared; all_radii(1, 4) = rd_radiusSquared;
+        
+        median_radii(1, count_median+1) = median(all_radii);
+        count_median = count_median + 1;
+        count = count + 4; %updating the count 
     end 
-end 
-
-
-%creating time vector 
-increment_time = 0;                             %keeps track of time
-time_vect = zeros(1, (length(acqfolders)-1)*4); %4 slots for each time point
-t1 = 4;
-
-%populating the vector with time
-while 1 
-    if  t1 > (12*4)
-        increment_time = increment_time + 30;   %increment current time by 30mins
-    else
-        increment_time = increment_time + 5;    %increment current time by 5 for first 13 acquistions
-    end
-
-    for t2 = 1:4
-        time_vect(t1+t2) = increment_time;
-    end 
-    t1 = t1 + 4;
-    if t1 >= (length(time_vect))
-        break
-    end 
-end
+ end 
 
 %conslidates the radii and time vectors to one vector
 final_vec = zeros(length(time_vect), 2);
@@ -262,12 +323,41 @@ scatter(final_vec(:, 1), final_vec(:, 2));                          %scatter plo
 hold on
 plot(xfit, yfit, 'LineWidth',2);                                    %best line of fit plot
 hold off
-xlabel('time(min)'); ylabel('r^2(cm^2)'); xlim([0 200]); ylim([0 2]);
+xlabel('time(min)'); ylabel('r^2(cm^2)'); 
+
+if c == 1
+    xlim([0 80]); ylim([0 1]);
+    saveas(gcf, fullfile(imdirectory, sprintf('radii_time_60mins.fig')), 'fig');
+else
+    xlim([0 200]); ylim([0 1]);
+    saveas(gcf, fullfile(imdirectory, sprintf('radii_time_3hrs.fig')), 'fig');
+end 
 title('Graph of radius^2(cm^2) vs time(min)');
-saveas(gcf, fullfile(imdirectory, sprintf('radii_time.fig')), 'fig');
 close(figure(6));
 
-diff_cofficient = coefficients(1)*(1/60) * 0.25;                    %Einstein's equation
-fprintf('Diffusion co-efficient for AF700 from run 1: %d (cm^2 per second)\n', diff_cofficient)
- 
+
+figure(7);
+median_coefficients = polyfit(median_time, median_radii, 1);
+median_xfit = linspace(min(median_time), max(median_time), 1000);
+median_yfit = polyval(median_coefficients, median_xfit);
+scatter(median_time, median_radii);
+hold on
+plot(median_xfit, median_yfit, 'LineWidth', 2);
+hold off 
+if c == 1
+    xlim([0, 80]); ylim([0, 1]);
+    saveas(gcf, fullfile(imdirectory, sprintf('Median_radii_time_60mins.fig')), 'fig');
+else 
+    xlim([0, 200]); ylim([0, 1]);
+    saveas(gcf, fullfile(imdirectory, sprintf('Median_radii_time.fig')), 'fig');
+end 
+xlabel('time(min)'); ylabel('r^2(cm^2)'); 
+title('Median r^2 against time(mins)');
+close(figure(7));
+
+
+diff_cofficient = coefficients(1)*(1/60) * 0.25;
+fprintf('\nDiffusion co-efficient: %d (cm^2 per second)\n', diff_cofficient)
+medianDiff_cofficient = median_coefficients(1)*(1/60) * 0.25;                   %Einstein's equation
+fprintf('Median radii Diffusion co-efficient: %d (cm^2 per second)\n', medianDiff_cofficient)
 diary off   
