@@ -12,7 +12,9 @@ an empty well (imaged without dye) to account for autofluorescence(background no
 with a dye/that have fluorescence due to the dye.
 
 For each run, I used a suitable acquisition to create 4 regions-of-interest (ROIs) over 4 different cross-sections of the well (horizontal, left diagonal,
-vertical line and right diagonal). I used the same ROI generated on all other acquistion to get a consistent result. For all acquistions, I plotted a graph of fluorescence Gray Scale/Pixel vs distance (cm): (distance converted from pixel to cm: 1cm - 142.003pixels), and found the distance between the peaks that's the x-intercept on either sides of peak as the diameter. Using this diameter I found the radius, squared it and stored it in an array.
+vertical line and right diagonal). I used the same ROI generated on all other acquistion to get a consistent result. For all acquistions, I plotted a graph of 
+fluorescence Gray Scale/Pixel vs distance (cm): (distance converted from pixel to cm: 1cm - 142.003pixels), and found the distance between the peaks that's 
+the x-intercept on either sides of peak as the diameter. Using this diameter I found the radius, squared it and stored it in an array.
 
 For the time, I imaged every 5 minutes from acqiuistion 2 to acquistion 13, and 30 minutes apart for other acquisitions after the 13th one. Since 
 there are four cross-sections, hence 4 x^2, I had 4 slots for each time point. The two arrays, x^2 and t(time), had 68 elements because there are 
